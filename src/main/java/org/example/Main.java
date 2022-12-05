@@ -1,11 +1,19 @@
 package org.example;
 
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ *  Класс служит для сравнения производительности LinkedList и ArrayList.
+ @author Slivkin Sergey
+ @version 1.0
+ */
 
 public class Main {
+   /**
+    * Основной метод, проводящий тесты и выводящий результаты в консоль в виде таблицы.
+    * @param args Не используется.
+   */
     public static void main(String[] args) {
         LinkedList<Integer> linked1;
         linked1 = new LinkedList<Integer>();
@@ -42,6 +50,9 @@ public class Main {
         System.out.format("+-----------+--------+------------------+%n");
     }
 
+    /**
+     * Прогрев JVM
+     */
     public static void WarmUp(){
         LinkedList<Integer> linked;
         linked = new LinkedList<Integer>();
