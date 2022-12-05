@@ -10,10 +10,13 @@ import java.util.LinkedList;
  */
 
 public class Main {
-   /**
-    * Основной метод, проводящий тесты и выводящий результаты в консоль в виде таблицы.
-    * @param args Не используется.
-   */
+    /** Сколько раз выполнялись операции в тестах */
+    public static int N = 10000;
+
+    /**
+     * Основной метод, проводящий тесты и выводящий результаты в консоль в виде таблицы.
+     * @param args Не используется.
+     */
     public static void main(String[] args) {
         LinkedList<Integer> linked1;
         linked1 = new LinkedList<Integer>();
@@ -28,26 +31,31 @@ public class Main {
         ArrayList<Integer> array;
         array = new ArrayList<Integer>();
 
-        long time1 = Operations.Add(linked);
-        long time2 = Operations.Add(array);
+        long time1 = Operations.Add(linked, N);
+        long time2 = Operations.Add(array, N);
 
-        long time3 = Operations.Get(linked);
-        long time4 = Operations.Get(array);
+        long time3 = Operations.Get(linked, N);
+        long time4 = Operations.Get(array, N);
 
-        long time5 = Operations.Delete(linked);
-        long time6 = Operations.Delete(array);
-        String leftAlignFormat = "| %-9s | %-6s | %-16d |%n";
-
-        System.out.format("+-----------+--------+------------------+%n");
-        System.out.format("| Operation | type   | time             |%n");
-        System.out.format("+-----------+--------+------------------+%n");
-        System.out.format(leftAlignFormat, "Add", "linked", time1);
-        System.out.format(leftAlignFormat, "Add", "array", time2);
-        System.out.format(leftAlignFormat, "Get", "linked", time3);
-        System.out.format(leftAlignFormat, "Get", "array", time4);
-        System.out.format(leftAlignFormat, "Delete", "linked", time5);
-        System.out.format(leftAlignFormat, "Delete", "array", time6);
-        System.out.format("+-----------+--------+------------------+%n");
+        long time5 = Operations.Delete(linked, N);
+        long time6 = Operations.Delete(array, N);
+        System.out.println("LinkedList");
+        String leftAlignFormat = "| %-9s | %-7d | %-16d |%n";
+        System.out.format("+-----------+---------+------------------+%n");
+        System.out.format("| Operation | Times   | Time (nanoSec)   |%n");
+        System.out.format("+-----------+---------+------------------+%n");
+        System.out.format(leftAlignFormat, "Add", N, time1);
+        System.out.format(leftAlignFormat, "Get", N, time3);
+        System.out.format(leftAlignFormat, "Delete", N, time5);
+        System.out.format("+-----------+---------+------------------+%n");
+        System.out.println("ArrayList");
+        System.out.format("+-----------+---------+------------------+%n");
+        System.out.format("| Operation | Times   | Time (nanoSec)   |%n");
+        System.out.format("+-----------+---------+------------------+%n");
+        System.out.format(leftAlignFormat, "Add", N, time2);
+        System.out.format(leftAlignFormat, "Get", N, time4);
+        System.out.format(leftAlignFormat, "Delete", N, time6);
+        System.out.format("+-----------+---------+------------------+%n");
     }
 
     /**
@@ -60,13 +68,13 @@ public class Main {
         array = new ArrayList<Integer>();
         long start = System.nanoTime();
 
-        Operations.Add(linked);
-        Operations.Get(linked);
-        Operations.Delete(linked);
+        Operations.Add(linked, N);
+        Operations.Get(linked, N);
+        Operations.Delete(linked, N);
 
-        Operations.Add(array);
-        Operations.Get(array);
-        Operations.Delete(array);
+        Operations.Add(array, N);
+        Operations.Get(array, N);
+        Operations.Delete(array, N);
 
         long finish = System.nanoTime();
         long time = finish - start;

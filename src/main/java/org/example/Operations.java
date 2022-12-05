@@ -10,13 +10,14 @@ import java.util.List;
 
 public class Operations {
     /**
-     * Метод измеряющий время необходимое для добавления 4000 элементов.
+     * Метод измеряющий время необходимое для добавления n элементов.
      * @param list Параметр списка (ArrayList/LinkedList)
+     * @param n Параметр числа выполнения операций добавления
      * @return long Возвращает вычисленное время выполнения операций.
      */
-    public static long Add(List list){
+    public static long Add(List list, int n){
         long start = System.nanoTime();
-        for (int i = 0; i < 4000; i++) {
+        for (int i = 0; i < n; i++) {
             list.add(i);
         }
         long finish = System.nanoTime();
@@ -27,13 +28,14 @@ public class Operations {
     }
 
     /**
-     * Метод измеряющий время необходимое для извлечения из списка 4000 элементов.
+     * Метод измеряющий время необходимое для извлечения из списка n элементов.
      * @param list Параметр списка (ArrayList/LinkedList)
+     * @param n Параметр числа выполнения операций извлечения
      * @return long Возвращает вычисленное время выполнения операций.
      */
-    public static long Get(List list){
+    public static long Get(List list, int n){
         long start = System.nanoTime();
-        for (int i = 0; i < 4000; i++) {
+        for (int i = 0; i < n; i++) {
             list.get(i);
         }
         long finish = System.nanoTime();
@@ -44,13 +46,14 @@ public class Operations {
     }
 
     /**
-     * Метод измеряющий время необходимое для удаления из списка 4000 элементов.
+     * Метод измеряющий время необходимое для удаления из списка n элементов.
      * @param list Параметр списка (ArrayList/LinkedList)
+     * @param n Параметр числа выполнения операций удаления
      * @return long Возвращает вычисленное время выполнения операций.
      */
-    public static long Delete(List list){
+    public static long Delete(List list, int n){
         long start = System.nanoTime();
-        for (int i = 3999; i >= 0; i--) {
+        for (int i = n-1; i >= 0; i--) {
             list.remove(i);
         }
         long finish = System.nanoTime();
